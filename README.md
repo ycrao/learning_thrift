@@ -204,11 +204,11 @@ except Thrift.TException, tx:
 chmod +x server.py client.py
 # terminal#1
 ./servcer.py
-# You will see
-# Starting python server...
+# You will see `Starting python server...`
 # terminal#2
 ./client.py
-# pong
+# You will see `pong` at terminal#2
+# and `Hello form python!` at terminal#1 
 ```
 
 ### 参考资源
