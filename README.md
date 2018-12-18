@@ -103,7 +103,7 @@ Thrift 可以让用户选择客户端与服务端之间传输通信协议的类�
 
 #### Ping
 
->   本示例参考了 [bayandin/thrift-examples](https://github.com/bayandin/thrift-examples) ，并做些改动。
+>   示例代码位于 [examples/ping](examples/ping) 目录，本示例参考了 [bayandin/thrift-examples](https://github.com/bayandin/thrift-examples) ，并做些改动。
 
 编写 `ping.thrift` 文件
 
