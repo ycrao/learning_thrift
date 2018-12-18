@@ -99,6 +99,118 @@ Thrift 可以让用户选择客户端与服务端之间传输通信协议的类�
 2. TThreadPoolServer —— 多线程服务器端使用标准的阻塞式 I/O
 3. TNonblockingServer —— 多线程服务器端使用非阻塞式 I/O
 
+### 示例
+
+#### Ping
+
+>   本示例参考了 [bayandin/thrift-examples](https://github.com/bayandin/thrift-examples) ，并做些改动。
+
+编写 `ping.thrift` 文件
+
+```thrift
+service PingService {
+    string ping(),
+    void say(1:string msg)
+}
+```
+
+生成 `python` 语言代码
+
+```bash
+thrift -out pygen/ --gen py ping.thrift
+```
+
+编写 `server.py` 代码：
+
+```python
+#!/usr/bin/env python
+
+from thrift.transport import TSocket
+from thrift.transport import TTransport
+from thrift.protocol import TBinaryProtocol
+from thrift.server import TServer
+
+from pygen.ping import PingService
+
+
+class PingServiceHandler:
+    def __init__(self):
+        self.log = {}
+
+    def ping(self):
+        return 'pong'
+
+    def say(self, msg):
+        print(msg)
+
+
+handler = PingServiceHandler()
+processor = PingService.Processor(handler)
+transport = TSocket.TServerSocket(port=9090)
+tfactory = TTransport.TBufferedTransportFactory()
+pfactory = TBinaryProtocol.TBinaryProtocolFactory()
+
+server = TServer.TSimpleServer(processor, transport, tfactory, pfactory)
+
+print('Starting python server...')
+server.serve()
+print('done!')
+```
+
+编写 `client.py` 代码：
+
+```python
+#!/usr/bin/env python
+
+import sys
+sys.path.append('./pygen')
+
+from thrift import Thrift
+from thrift.transport import TSocket
+from thrift.transport import TTransport
+from thrift.protocol import TBinaryProtocol
+
+from pygen.ping import PingService
+
+try:
+
+    # Make socket
+    transport = TSocket.TSocket('localhost', 9090)
+
+    # Buffering is critical. Raw sockets are very slow
+    transport = TTransport.TBufferedTransport(transport)
+
+    # Wrap in a protocol
+    protocol = TBinaryProtocol.TBinaryProtocol(transport)
+
+    # Create a client to use the protocol encoder
+    client = PingService.Client(protocol)
+
+    # Connect!
+    transport.open()
+    print(client.ping())
+    client.say('Hello form python!')
+
+    # Close!
+    transport.close()
+
+except Thrift.TException, tx:
+    print '%s' % (tx.message)
+```
+
+运行：
+
+```bash
+chmod +x server.py client.py
+# terminal#1
+./servcer.py
+# You will see
+# Starting python server...
+# terminal#2
+./client.py
+# pong
+```
+
 ### 参考资源
 
 - [官方网站](https://thrift.apache.org/)
