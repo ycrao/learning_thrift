@@ -43,7 +43,7 @@ int main(int argc, char **argv) {
   ::apache::thrift::stdcxx::shared_ptr<TProtocolFactory> protocolFactory(new TBinaryProtocolFactory());
 
   TSimpleServer server(processor, serverTransport, transportFactory, protocolFactory);
-  printf("Starting cpp server\n");
+  printf("Starting cpp server...\n");
   server.serve();
   printf("done\n");
   return 0;

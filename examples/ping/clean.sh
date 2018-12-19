@@ -1,0 +1,1 @@
+rm -f *.o server client
