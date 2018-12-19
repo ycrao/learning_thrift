@@ -103,7 +103,8 @@ Thrift 可以让用户选择客户端与服务端之间传输通信协议的类�
 
 #### Ping
 
->   示例代码位于 [examples/ping](examples/ping) 目录，本示例参考了 [bayandin/thrift-examples](https://github.com/bayandin/thrift-examples) ，并做些改动。
+>   示例代码位于 [examples/ping](examples/ping) 目录，下面主要针对 `python` 的实现做出操作分解说明，`python` 示例代码参考了 [bayandin/thrift-examples](https://github.com/bayandin/thrift-examples) 项目，并有些改动。
+>   `C++` 语言版本的双端代码为 `server.cpp` 与 `client.cpp`，您可以使用 `compile_cpp_server.sh` 和 `compile_cpp_client.sh` 编译为二进制。
 
 编写 `ping.thrift` 文件
 
@@ -117,6 +118,8 @@ service PingService {
 生成 `python` 语言代码
 
 ```bash
+cd examples
+mkdir pygen
 thrift -out pygen/ --gen py ping.thrift
 ```
 
@@ -219,3 +222,4 @@ chmod +x server.py client.py
 - [Apache Thrift - 可伸缩的跨语言服务开发框架](https://www.ibm.com/developerworks/cn/java/j-lo-apachethrift/index.html)
 - [Thrift简介及实例应用](https://blog.csdn.net/xyw_blog/article/details/8950140 )
 - [Thrift Tutorial](https://thrift-tutorial.readthedocs.io/en/latest/intro.html)
+- [ubuntu下安装使用Thrift](http://blog.51cto.com/speakingbaicai/1160378)

@@ -27,7 +27,7 @@ try:
     # Connect!
     transport.open()
     print(client.ping())
-    client.say('Hello form python!')
+    client.say('Hello from python!')
 
     # Close!
     transport.close()

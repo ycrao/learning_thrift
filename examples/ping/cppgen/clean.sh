@@ -1,0 +1,1 @@
+rm -r *.o *.h *.cpp *.bak
