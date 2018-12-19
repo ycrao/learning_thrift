@@ -334,7 +334,7 @@ chmod +x compile_cpp_client.sh compile_cpp_server.sh
 ./compile_cpp_client.sh
 ```
 
-同 `python` 运行脚本类似，常驻起 `server` ，然后在另外终端允许 `client` 。
+同 `python` 运行脚本类似，终端运行起 `server` ，然后在另一终端运行 `client` 。
 
 ```bash
 # terminal#1
