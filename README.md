@@ -225,10 +225,11 @@ mkdir cppgen
 thrift -out cppgen/ --gen cpp ping.thrift
 ```
 
-复制 `cppge` 目录下骨架代码，命名为 `server.cpp`。
+复制 `cppgen` 目录下骨架代码（`PingService_server.skeleton.cpp`），命名为 `server.cpp`。
 
 ```bash
 cp cppgen/PingService_server.skeleton.cpp server.cpp
+mv cppgen/PingService_server.skeleton.cpp cppgen/PingService_server.skeleton.cpp.bak
 ```
 
 `server.cpp` 改写之后的代码大体如下：
@@ -333,7 +334,7 @@ chmod +x compile_cpp_client.sh compile_cpp_server.sh
 ./compile_cpp_client.sh
 ```
 
-同 `python` 类似，常驻起 `server` 
+同 `python` 运行脚本类似，常驻起 `server` ，然后在另外终端允许 `client` 。
 
 ```bash
 # terminal#1
