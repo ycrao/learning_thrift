@@ -215,7 +215,7 @@ chmod +x server.py client.py
 # and `Hello form python!` at terminal#1 
 ```
 
-#### C++ 的实现
+#### `C++` 的实现
 
 生成 `cpp` 语言代码
 
