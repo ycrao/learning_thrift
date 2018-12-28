@@ -119,7 +119,11 @@ service PingService {
 生成 `python` 语言代码
 
 ```bash
-cd examples
+cd examples/ping
+# 安装 python thrift 依赖
+pip install "thrift==0.11.0"
+# 如果是直接使用本代码，可以使用下面命令安装
+pip install -r requirements.txt
 mkdir pygen
 thrift -out pygen/ --gen py ping.thrift
 ```
