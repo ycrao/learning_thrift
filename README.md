@@ -197,7 +197,7 @@ try:
     # Connect!
     transport.open()
     print(client.ping())
-    client.say('Hello form python!')
+    client.say('Hello from python!')
 
     # Close!
     transport.close()
@@ -224,7 +224,7 @@ chmod +x server.py client.py
 生成 `cpp` 语言代码
 
 ```bash
-cd examples
+cd examples/ping
 mkdir cppgen
 thrift -out cppgen/ --gen cpp ping.thrift
 ```
