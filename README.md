@@ -346,6 +346,10 @@ chmod +x compile_cpp_client.sh compile_cpp_server.sh
 # and `Hello form cpp` at terminal#1
 ```
 
+#### `Java` 的实现
+
+请参考我的 [learning_java](https://github.com/ycrao/learning_java#thrift-java-%E7%A4%BA%E4%BE%8B) 仓库相关内容。
+
 ### 参考资源
 
 - [官方网站](https://thrift.apache.org/)
